@@ -12,6 +12,7 @@ public class Buttons : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //when the button is touched by the head or either hand teleport the player to the play area
         player = GameObject.FindWithTag("Player");
         if (other.gameObject.name == "HeadMesh")
         {
@@ -34,6 +35,7 @@ public class Buttons : MonoBehaviour
 
     public void Teleport()
     {
+        //teleport the player to the right spot depending what button they pressed
         Destroy(GameObject.FindWithTag("GameController"));
         if(gameObject.name == "RedButton")
         {

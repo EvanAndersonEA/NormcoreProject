@@ -12,6 +12,7 @@ public class Buttons1 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //another button script that does the same thing sorta(see Button script for explanation)
         player = GameObject.FindWithTag("Player");
         if (other.gameObject.name == "HeadMesh")
         {

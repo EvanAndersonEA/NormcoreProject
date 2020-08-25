@@ -13,7 +13,7 @@ public class ObsSpawner : MonoBehaviour
 
     private void Awake()
     {
-        //difficulty = FindObjectOfType<DifficultyManager>().currentDifficulty;
+        //sets the timer time and the first object
         currentObs = duck;
         timerTotal = 0.75f;
         timeLeft = 0.75f;
@@ -21,6 +21,7 @@ public class ObsSpawner : MonoBehaviour
 
     void Update()
     {
+        //when the timer runs out spawn an object
         if (timeLeft <= 0)
         {
             SpawnObject(zpos);
@@ -34,6 +35,7 @@ public class ObsSpawner : MonoBehaviour
 
     void SpawnObject(float zpos)
     {
+        //spawn a random object, if its the same as the last it spawns a random object again (this means that it is possible for 2 of the same obsticle to spawn back to back)
         lastRandomNumber = randomNumber;
         randomNumber = Random.Range(0, 4);
 
@@ -75,6 +77,7 @@ public class ObsSpawner : MonoBehaviour
                 currentObs = bottom;
             }
         }
+        //sets the new objects speed, direction and spawn location according to the inspector
         doggie = Instantiate(currentObs, new Vector3(xpos, 0, zpos), Quaternion.identity);
         doggie.GetComponent<ObstMove>().speed = speed;
         doggie.GetComponent<ObstMove>().zlimitpositive = zlimitpositive;
